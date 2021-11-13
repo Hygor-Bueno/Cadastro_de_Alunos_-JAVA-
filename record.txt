@@ -1,0 +1,4 @@
+
+{ id:46017035819,data:{Nome de Usuário: hygor_knd;Senha: 1234;Nome Completo: Hygor Azevedo Bueno;E-mail: hgrzvd@gmail.com;Gênero: Masculino;Data de Nascimento: 24/12/1997;Endereço: Rua Azaleia 155. Vargem Grande - SP;Renda Mensal: R$1.2;CPF: 46017035819;}}
+{ id:12345678989,data:{Nome de Usuário: jose_almeida;Senha: 1234;Nome Completo: Jose Almeida;E-mail: jose@gmail.com;Gênero: Masculino;Data de Nascimento: 24/12/1997;Endereço: Rua Azaleia 155. Vargem Grande - SP;Renda Mensal: R$1.2;CPF: 12345678989;}}
+{ id:98765432121,data:{Nome de Usuário: ana_kha;Senha: 1234;Nome Completo: Ana Catarina;E-mail: kha@gmail.com;Gênero: Feminino;Data de Nascimento: 24/12/1997;Endereço: Rua Azaleia 155. Vargem Grande - SP;Renda Mensal: R$1.2;CPF: 98765432121;}}
