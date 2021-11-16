@@ -5,76 +5,107 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Student {
+
     /*
     userName= nome de usuário, fullName = nome completo, email=e-amil,genre=gênero, birth=nascimento, address=endereço
     monthlyIncome = renda mensal, cpf;
-    */
-    String userName,fullName, email,genre, birth, address,cpf;
+     */
+    String userName, fullName, email, genre, birth, address, cpf;
     double monthlyIncome;
     int password;
-    public Student(String userName,int password,String fullName,String email,String genre,String birth,String address,double monthlyIncome,String cpf){
-        this.userName= userName;
-        this.password=password;
+
+    public Student(String userName, int password, String fullName, String email, String genre, String birth, String address, double monthlyIncome, String cpf) {
+        this.userName = userName;
+        this.password = password;
         this.fullName = fullName;
-        this.email= email;
-        this.genre= genre;
-        this.birth= birth;
-        this.address= address;
+        this.email = email;
+        this.genre = genre;
+        this.birth = birth;
+        this.address = address;
         this.monthlyIncome = monthlyIncome;
-        this.cpf= cpf;
+        this.cpf = cpf;
     }
-    public Student(int i,String b){}
-    
-    public void createFile(){
+
+    public Student(String cpf, String userName, int password, String fullName, String email, String genre, String birth, String address, double monthlyIncome) {
+        this.userName = userName;
+        this.password = password;
+        this.fullName = fullName;
+        this.email = email;
+        this.genre = genre;
+        this.birth = birth;
+        this.address = address;
+        this.monthlyIncome = monthlyIncome;
+        this.cpf = cpf;
+    }
+
+    public void createFile(boolean value) {
         try {
-            FileWriter fw = new FileWriter("record.txt",true);
+            FileWriter fw = new FileWriter("record.txt", value);
             PrintWriter pw = new PrintWriter(fw);
-            // Cabeçalho do Arquivo
-            pw.println();
-            pw.print("{ id:"+this.cpf+",");            
-            //Corpo do Arquivo:
-            pw.print("data:{");
-            pw.print("Nome de Usuário: "+this.userName+";");
-            pw.print("Senha: "+this.password+";");
-            pw.print("Nome Completo: "+this.fullName+";");
-            pw.print("E-mail: "+this.email+";");
-            pw.print("Gênero: "+this.genre+";");
-            pw.print("Data de Nascimento: "+this.birth+";");
-            pw.print("Endereço: "+this.address+";");
-            pw.print("Renda Mensal: R$"+this.monthlyIncome+";");
-            pw.print("CPF: "+this.cpf+";");
-            pw.print("}");
-            pw.print("}");
-            
+            pw.println("User: "
+                    + this.cpf + ","
+                    + this.userName + ","
+                    + this.password + ","
+                    + this.fullName + ","
+                    + this.email + ","
+                    + this.genre + ","
+                    + this.birth + ","
+                    + this.address + ","
+                    + this.monthlyIncome
+            );
             pw.flush();
             pw.close();
             fw.close();
         } catch (IOException error) {
-            System.out.println("Falha ao Gerar Arquivo:"+ error);
-        }   
+            System.out.println("Falha ao Gerar Arquivo:" + error);
+        }
     }
-    public void getFile(){
+    
+    public void delete(int value, ArrayList arrayList){
+        
+    }
+
+    public ArrayList getFile() {
         String path = "record.txt";
-        try(BufferedReader br=new BufferedReader(new FileReader(path))){
+        ArrayList<String> list = new ArrayList();
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
-            int cont = 0;
-            String[] as = new String[9];
-            while(line !=null){
-                System.out.println(line);
+            while (line != null) {
+                list.add(line);
                 line = br.readLine();
-                as[cont] =line;
-                cont++;
             }
-            for(String sa:as){                
-                System.out.println(sa);
-            }
-        }catch(IOException error) {
-            System.out.println("Falha ao ler Arquivo:"+ error);
-        }   
+        } catch (IOException error) {
+            System.out.println("Falha ao ler Arquivo:" + error);
+        }
+        return list;
     }
-    
-    
+
+    public ArrayList selectUser(int value, ArrayList arrayList) {
+        ArrayList<Object> list = new ArrayList();
+        for (int index = 0; index < arrayList.size(); index++) {
+            if (index != value) {
+                list.add(arrayList.get(index));
+            }
+        }
+        this.desmemberData(list);
+        //System.out.println(list);
+        return list;
+    }
+
+    public ArrayList desmemberData(ArrayList arrayList) {
+        ArrayList<ArrayList<Object>> listUser = new ArrayList<>();
+        for (int index = 0; index < arrayList.size(); index++) {
+            ArrayList<Object> list = new ArrayList();
+            String[] value = arrayList.get(index).toString().replaceAll("User: ", "").split(",");
+            list.addAll(Arrays.asList(value));
+            listUser.add(list);
+        }
+        System.out.println(listUser.get(2));
+        return listUser;
+    }
+
 }
