@@ -10,6 +10,6 @@ public class RegisterStudents {
             System.out.println(view.clean(15));
             router.main(value);
         } while (value != 5);
-        System.out.println("Fim do Algoritimo");
     }
+    
 }

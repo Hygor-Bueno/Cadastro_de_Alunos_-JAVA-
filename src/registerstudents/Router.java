@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package registerstudents;
 
-import java.util.Scanner;
-
-/**
- *
- * @author Administrator
- */
 public class Router {
 
     Student student = new Student();
-    
+
     public void main(int index) {
         switch (index) {
             case 1:
-                student.getData();
+                student.registerStudent();
                 break;
             case 2:
                 System.out.println(" Opção Nº " + index + ".\n Foi Selecionada!");
@@ -30,7 +19,7 @@ public class Router {
                 System.out.println(" Opção Nº " + index + ".\n Foi Selecionada!");
                 break;
             case 5:
-                System.out.println(" Opção Nº " + index + ".\n Foi Selecionada!");
+                System.out.println("Fim do Algoritimo");
                 break;
             default:
                 System.out.println("Desculpe Opção inválida!");
@@ -38,5 +27,4 @@ public class Router {
         }
     }
 
-    
 }

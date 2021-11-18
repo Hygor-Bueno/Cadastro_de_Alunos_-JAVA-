@@ -15,6 +15,7 @@ public class Student {
     userName= nome de usuário, fullName = nome completo, email=e-amil,genre=gênero, birth=nascimento, address=endereço
     monthlyIncome = renda mensal, cpf;
      */
+    View view = new View();
     Scanner sc = new Scanner(System.in);
     Validator validation = new Validator();
     String userName, fullName, email, genre, birth, address, cpf;
@@ -126,34 +127,51 @@ public class Student {
         return listUser;
     }
 
-    public void getData() {
+    public void registerStudent() {
+        String response;
 
-        System.out.print("Digite o Nome de Usuário: ");
-        this.userName = sc.nextLine();
+        do {
+            System.out.print("Digite o Nome de Usuário: ");
+            response = sc.nextLine().toUpperCase();
+        } while (response.equals(""));
 
-        System.out.print("Digite o Nome completo do Estudante: ");
-        this.fullName = sc.nextLine();
+        this.userName = response;
 
-        System.out.println("Esta é a senha do aluno: " + passwordGenerator());
+        System.out.println("SENHA: \n");
+        int pass = this.passwordGenerator();
+        System.out.println(" ****************************************** \n"
+                + " Esta é a senha do aluno: " + pass + "\n"
+                + " ****************************************** \n");
+        this.password = pass;
 
-        System.out.print("Digite o E-mail Estudante: ");
-        this.email = sc.nextLine();
+        do {
+            System.out.print("Digite o Nome completo do Estudante: ");
+            this.fullName = sc.nextLine().toUpperCase();
+        } while (response.equals(""));
 
-        System.out.print("Digite o Gênero do Estudante: ");
-        this.genre = sc.nextLine();
+        do {
+            System.out.print("Digite o E-mail do Estudante: ");
+            this.email = sc.nextLine().toUpperCase();
+        } while (response.equals(""));
 
-        System.out.print("Digite a data de Nascimento do Estudante: ");
-        this.birth = sc.nextLine();
+        do {
+            System.out.print("Digite o Gênero do Estudante: ");
+            this.genre = sc.nextLine().toUpperCase();
+        } while (response.equals(""));
 
-        System.out.print("Digite o Endereço do Estudante: ");
-        this.address = sc.nextLine();
+        System.out.print("DATA DE NASCIMENTO: \n");
+        this.birth = this.createBirthDate();
 
-        System.out.print("Digite o valor da renda mensal do Estudante: ");
-        this.monthlyIncome = sc.nextDouble();
-        sc.nextLine();
+        System.out.print("Digite o Endereço do Estudante: \n");
+        this.address = this.createAddress();
 
-        System.out.print("Digite o CPF do Estudante: ");
-        this.cpf = sc.nextLine();
+        do {
+            System.out.print("Digite o valor da renda mensal do Estudante: ");
+            this.monthlyIncome = sc.nextDouble();
+            sc.nextLine();
+        } while (response.equals(""));
+
+        this.cpf = this.createCPF();
 
         Student students = new Student(this.userName, this.password, this.fullName, this.email, this.genre, this.birth, this.address, this.monthlyIncome, this.cpf);
         View view = new View();
@@ -172,12 +190,56 @@ public class Student {
 
     public int passwordGenerator() {
         int[] value = new int[3];
+        String response;
         for (int index = 0; index < value.length; index++) {
             do {
-                System.out.print(" Digite o " + (index + 1) + "º Valor. \n ATEÇÃO: valor deve estar entre 1000 e 9999:");
-                value[index] = Integer.parseInt(sc.nextLine());
-            } while (!(validation.equalLength(Integer.toString(value[index]), 4) && validation.equalValue(value)));
+                do {
+                    System.out.print(" Digite o " + (index + 1) + "º Valor. \n ATEÇÃO: valor deve estar entre 1000 e 9999:");
+                    response = sc.nextLine();
+                    System.out.println(response);
+                    System.out.println(" comprimento igual ->" + !validation.equalLength(response, 4)
+                            + " resposta vazia -> " + response.equals("")
+                            + " String -> " + view.checkLetters(response, "Números"));
+                } while (!validation.equalLength(response, 4) || response.equals("") || view.checkLetters(response, "Números"));
+            } while (!validation.equalValue(value, Integer.parseInt(response)));
+            value[index] = Integer.parseInt(response);
         }
+
         return validation.lowerValue(value);
+    }
+
+    public String createBirthDate() {
+        String[][] date = {{"Dia (Digitar no máximo 2 números): ", "2"}, {"Mês (Digitar no máximo 2 números): ", "2"}, {"Ano Digitar apenas 4 numeros", "4"}};
+        String[] response = new String[3];
+        for (int index = 0; index < 3; index++) {
+            do {
+                System.out.println(date[index][0]);
+                response[index] = sc.nextLine();
+            } while (!validation.maxLength(response[index], Integer.parseInt(date[index][1])) || response[index].equals("") || view.checkLetters(response[index], "Números"));
+        }
+        System.out.println("DATA: " + response[0] + "/" + response[1] + "/" + response[2]);
+        return response[0] + "/" + response[1] + "/" + response[2];
+    }
+
+    public String createAddress() {
+        String[] data = {"Nome da Rua: ", "Número da residência: ", "CEP: ", "Bairro: "};
+        String[] response = new String[4];
+        for (int index = 0; index < 4; index++) {
+            do {
+                System.out.println(data[index]);
+                response[index] = sc.nextLine().toUpperCase();
+            } while (response[index].equals(""));
+        }
+        System.out.println("Rua: " + response[0] + " Nº: " + response[1] + ". CEP: " + response[2] + " " + response[3]);
+        return "Rua: " + response[0] + " Nº: " + response[1] + ". CEP: " + response[2] + " " + response[3];
+    }
+
+    public String createCPF() {
+        String value;
+        do {
+            System.out.print("Digite o CPF do Estudante: ");
+            value = sc.nextLine();
+        } while (!validation.equalLength(value, 11));
+        return value;
     }
 }
