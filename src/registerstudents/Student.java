@@ -10,11 +10,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Student {
-
-    /*
-    userName= nome de usuário, fullName = nome completo, email=e-amil,genre=gênero, birth=nascimento, address=endereço
-    monthlyIncome = renda mensal, cpf;
-     */
+    /* userName= nome de usuário, fullName = nome completo, email=e-amil,genre=gênero, birth=nascimento, address=endereço, monthlyIncome = renda mensal, cpf; */
     View view = new View();
     Scanner sc = new Scanner(System.in);
     Validator validation = new Validator();
@@ -61,14 +57,17 @@ public class Student {
     }
 
     public void delete(int value, ArrayList arrayList) {
+        int cont=0;
+        if(value-1==0) cont++;
         for (int index = 0; index < arrayList.size(); index++) {
+            System.out.println(cont);
             if (index != value - 1) {
                 ArrayList<Object> list = new ArrayList();
                 ArrayList<ArrayList<Object>> listDesmember;
                 list.add(arrayList.get(index));
                 listDesmember = this.desmemberData(list);
                 Student newFile = this.createObj(listDesmember);
-                if (index == 0) {
+                if (index == cont) {
                     newFile.createFile(false);
                 } else {
                     newFile.createFile(true);
@@ -196,10 +195,6 @@ public class Student {
                 do {
                     System.out.print(" Digite o " + (index + 1) + "º Valor. \n ATEÇÃO: valor deve estar entre 1000 e 9999:");
                     response = sc.nextLine();
-                    System.out.println(response);
-                    System.out.println(" comprimento igual ->" + !validation.equalLength(response, 4)
-                            + " resposta vazia -> " + response.equals("")
-                            + " String -> " + view.checkLetters(response, "Números"));
                 } while (!validation.equalLength(response, 4) || response.equals("") || view.checkLetters(response, "Números"));
             } while (!validation.equalValue(value, Integer.parseInt(response)));
             value[index] = Integer.parseInt(response);
@@ -230,7 +225,6 @@ public class Student {
                 response[index] = sc.nextLine().toUpperCase();
             } while (response[index].equals(""));
         }
-        System.out.println("Rua: " + response[0] + " Nº: " + response[1] + ". CEP: " + response[2] + " " + response[3]);
         return "Rua: " + response[0] + " Nº: " + response[1] + ". CEP: " + response[2] + " " + response[3];
     }
 

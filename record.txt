@@ -1,8 +1,4 @@
-User: 11111111111,ana_kha,1234,Ana Catarina,kha@gmail.com,Feminino,24/12/1997,Rua Azaleia 100. Vargem Grande - SP,1200.0
-User: 22222222222,flavia_fe,1234,Flavia Fernandes,fernandes@gmail.com,Feminino,24/12/1997,Rua Azaleia 110. Vargem Grande - SP,2200.0
-User: 33333333333,souza_24,1234,Amanda Souza,souza_24@gmail.com,Feminino,24/12/1997,Rua Azaleia 120. Vargem Grande - SP,2500.0
-User: 44444444444,ana_paula,1234,Ana Paula,paula@gmail.com,Feminino,24/12/1997,Rua Azaleia 130. Vargem Grande - SP,1200.0
 User: 66666666666,chis.souza,1234,Cristina Souza,chis.souza@gmail.com,Feminino,24/12/1997,Rua Azaleia 140. Vargem Grande - SP,1700.0
 User: 99999999999,carlos99,1234,Carlos Henrique da Silva,cls@gmail.com,Macolino,24/12/1997,Rua Azaleia 155. Vargem Grande - SP,1600.0
-User: 22222222214,zxc,12345,zxc zxc,zxc@gmail.com,Masculino,24/10/1999,zxc-1900. zxc,2000.0
 User: 46017035819,HYGOR AZEVEDO BUENO,1551,HYGOR AZEVEDO BUENO,HGRZVD@GMAIL.COM,MASCULINO,24/12/97,Rua: AZALEIA Nº: 155. CEP: 04895250 CONDOMINIO VARGEM GRANDE,2000.0
+User: 12345678900,LUCAS,1234,LUCAS BETHUEL,LUCAS@BETHUEL.COM,HOMAO,11/11/1995,Rua: 10 Nº: 123. CEP: 0580430 1,5000.0

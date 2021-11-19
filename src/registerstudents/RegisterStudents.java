@@ -7,7 +7,6 @@ public class RegisterStudents {
         Router router = new Router();
         do {
             value = view.systemMenu();
-            System.out.println(view.clean(15));
             router.main(value);
         } while (value != 5);
     }
