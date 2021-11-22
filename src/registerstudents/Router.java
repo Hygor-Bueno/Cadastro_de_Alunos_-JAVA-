@@ -4,12 +4,13 @@ public class Router {
 
     public void main(int index) {
         switch (index) {
-            case 1:
-                Student student = new Student();
-                student.registerStudent();
+            case 1:  
+                SettingStudents register = new SettingStudents();
+                register.registerStudent();
                 break;
             case 2:
-                System.out.println(" Opção Nº " + index + ".\n Foi Selecionada!");
+                SettingStudents upRegister = new SettingStudents();
+                upRegister.updateStudents();
                 break;
             case 3:
                 SettingStudents querry = new SettingStudents();

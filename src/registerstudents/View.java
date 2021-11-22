@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package registerstudents;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Administrator
- */
 public class View {
 
     String menu = "--------------------------- \n"
@@ -40,7 +31,6 @@ public class View {
         String aux;
         for (int index=0;index < str.length(); index++) {
             boolean res;
-            System.out.println(str.charAt(index));
             aux =str.charAt(index)+"";
             res = aux.matches("[^0-9]+");
             if(res){
@@ -59,7 +49,6 @@ public class View {
         String aux;
         for (int index=0;index < str.length(); index++) {
             boolean res;
-            System.out.println(str.charAt(index));
             aux =str.charAt(index)+"";
             res = aux.matches("[^0-9]+");
             if(res){

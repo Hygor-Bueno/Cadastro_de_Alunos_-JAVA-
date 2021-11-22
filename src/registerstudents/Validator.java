@@ -13,6 +13,7 @@ public class Validator {
         }
         return response;
     }
+
     public boolean maxLength(int value, int maxLength) {
         boolean response = true;
         if (value > maxLength) {
@@ -22,7 +23,7 @@ public class Validator {
         }
         return response;
     }
- 
+
     public boolean minLength(String value, int minLength) {
         boolean response = true;
         if (value.length() < minLength) {
@@ -64,5 +65,30 @@ public class Validator {
         }
         return response;
     }
-    
+
+    public boolean validationDouble(String str) {
+        boolean response = false, pointer = false;
+        String aux;        
+        for (int index = 0; index < str.length(); index++) {
+            boolean res;
+            aux = str.charAt(index) + "";
+            res = aux.matches("[^0-9]+");
+            if ((res) && (!aux.equals(".") && !aux.equals(","))) {
+                System.out.println(aux);
+                response = true;
+            } else if (aux.equals(",")) {
+                pointer = true;
+            }
+        }
+        if (response) {
+            System.out.println("");
+            System.out.println("Desculpe Entrada Inválida, Digite apenas números e ponto... \n");
+        }
+        if (pointer) {
+            System.out.println(str);
+            System.out.println("Por favor não digitar números com vírgula, subistituir vírgula por ponto para divisão dos centavos");
+            response = true;
+        }
+        return response;
+    }
 }
